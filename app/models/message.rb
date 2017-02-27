@@ -14,8 +14,11 @@ class Message < ApplicationRecord
                       :To => to,
                       :From => from }
       ).execute
-    rescue
+    rescue RestClient::BadRequest => error
+      message = JSON.parse(error.response)['message']
+      errors.add(:base, message)
       throw(:abort)
     end
   end
 end
+  
