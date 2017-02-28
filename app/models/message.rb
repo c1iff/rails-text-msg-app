@@ -1,6 +1,9 @@
 class Message < ApplicationRecord
   before_create :send_message
 
+  belongs_to :contact
+  belongs_to :user
+
   private
 
   def send_message
@@ -21,4 +24,3 @@ class Message < ApplicationRecord
     end
   end
 end
-  

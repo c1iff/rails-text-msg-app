@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.twilio.com/2010-04-01/Accounts/AC6507bad156c33684109c657024b29900/Messages.json
+    uri: https://api.twilio.com/2010-04-01/Accounts/<twilio account sid>/Messages.json
     body:
       encoding: US-ASCII
       string: Body=hi&To=1111111&From=5039463641
@@ -58,6 +58,6 @@ http_interactions:
       string: '{"code": 21212, "message": "The ''From'' number 5039463641 is not a
         valid phone number, shortcode, or alphanumeric sender ID.", "more_info": "https://www.twilio.com/docs/errors/21212",
         "status": 400}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Feb 2017 19:24:44 GMT
 recorded_with: VCR 3.0.3

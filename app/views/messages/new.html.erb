@@ -8,13 +8,21 @@
     <% end %>
   </ul>
 <% end %>
+<div class="row">
+  <div class="col-6">
+    <%= form_for @message do |f| %>
+      <%= f.label :contact_id %>
 
-<%= form_for @message do |f| %>
-  <%= f.label :to %>
-  <%= f.text_field :to %>
-  <%= f.label :from %>
-  <%= f.text_field :from %>
-  <%= f.label :body %>
-  <%= f.text_field :body %>
-  <%= f.submit %>
-<% end %>
+      <%= f.collection_select(:contact_id, @contacts, :id, :first_name, class: 'form-control') %>
+      <br>
+      <%= f.label :to %>
+      <%= f.text_field :to, class: 'form-control' %>
+      <%= f.label :from %>
+      <%= f.text_field :from, class: 'form-control' %>
+      <%= f.label :body %>
+      <%= f.text_area :body, class: 'form-control', rows: '3' %>
+      <%= f.text_field :user_id, type: 'hidden', value: current_user.id %><br>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
