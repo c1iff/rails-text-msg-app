@@ -9,39 +9,6 @@
 
   <body>
 
-    <!-- <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">Navbar</a>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-          <% if current_user %>
-          <li class="nav-item">
-           <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-         </li>
-          <% else %>
-            <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
-          <% end %>
-          <%= link_to 'Add a Contact', new_contact_path, class: 'nav-link' %>
-          <%= link_to 'Send a Text', new_message_path, class: 'nav-link' %>
-          <%= link_to 'View Contacts', contacts_path, class: 'nav-link' %>
-          <%= link_to 'View Messages', messages_path, class: 'nav-link' %>
-
-        </li>
-
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-    </nav> -->
-
     <div id="navbar-full">
       <div id="navbar">
          <!--
@@ -58,9 +25,9 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand navbar-brand-logo" href="https://s3-us-west-2.amazonaws.com/lob-assets/cta-letter.svg">
+                <a class="navbar-brand navbar-brand-logo" href="/">
                       <div class="logo">
-                      <img src="https://s3.amazonaws.com/creativetim_bucket/new_logo.png">
+                      <img src="http://media.westernmutual.com/Content/Assets/wm_web_logo_small.png?v=1.0.17039.3">
                       </div>
                       <div class="brand"> Text Time </div>
                 </a>
@@ -69,22 +36,42 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 
-                      <li><%= link_to 'Add a Contact', new_contact_path, class: 'nav-link' %></li>
-                      <li><%= link_to 'Send a Text', new_message_path, class: 'nav-link' %></li>
-                      <li><%= link_to 'View Contacts', contacts_path, class: 'nav-link' %></li>
-                      <li><%= link_to 'View Messages', messages_path, class: 'nav-link' %></li>
 
                       <li>
-                          <a href="#">
-                              <i class="pe-7s-mail">
-                                  <span class="label">23</span>
+                          <%= link_to (new_message_path)  do %>
+                              <i class="glyphicon glyphicon-edit">
+                              </i>
+                              <p>New Message</p>
+                          <% end %>
+                      </li>
+
+                      <li>
+                          <%= link_to (new_contact_path)  do %>
+                              <i class="glyphicon glyphicon-plus">
+                              </i>
+                              <p>New Contact</p>
+                          <% end %>
+                      </li>
+
+                      <li>
+                          <%= link_to (contacts_path)  do %>
+                              <i class="glyphicon glyphicon-tasks">
+                              </i>
+                              <p>Contacts</p>
+                          <% end %>
+                      </li>
+
+                      <li>
+                          <%= link_to (messages_path)  do %>
+                              <i class="glyphicon glyphicon-envelope">
+                                  <span class="label"> <%= Message.all.length %></span>
                               </i>
                               <p>Messages</p>
-                          </a>
+                          <% end %>
                       </li>
                       <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                  <i class="pe-7s-user"></i>
+                                  <i class="glyphicon glyphicon-user"></i>
                                   <p>Account</p>
                               </a>
                             <ul class="dropdown-menu">
@@ -109,9 +96,7 @@
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
-         <div class="blurred-container">
-              <div class="img-src" style="background-image: url('http://www.redpepperwallpaper.com/wp_highres/macro/WPZPYXE5.jpg')"></div>
-          </div>
+
       </div><!--  end navbar -->
 
   </div> <!-- end menu-dropdown -->
@@ -120,7 +105,12 @@
 
   </div>
   <!-- end main -->
+  <div class="flash-messages">
+    <p><%= flash[:alert] %></p>
+    <p><%= flash[:notice] %></p>
+  </div>
   <div class="container">
+    <br><br><br><br><br>
     <%= yield %>
   </div>
 

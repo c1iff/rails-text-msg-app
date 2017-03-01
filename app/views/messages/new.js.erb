@@ -1,0 +1,8 @@
+$('#remove').remove()
+$('#contact-select').after( "<%= j render 'contact-select' %>")
+$('#new-contact').after("<button class='btn btn-primary' type='button' id='remove'>Remove</button>")
+$('#remove').click(function(){
+  console.log('remove');
+  $('#contact-select').remove()
+  $(this).remove()
+})
